@@ -6,11 +6,12 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "rootDir": "./server/src",
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": ["server/src/**/*"]
+  "include": ["server/src/**/*"],
+  "exclude": ["dist"]
 }
