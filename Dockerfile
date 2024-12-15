@@ -2,7 +2,7 @@ FROM node:18-bullseye-slim as builder
 
 # Install fonts
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    fonts-ubuntu ca-certificates \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -16,13 +16,13 @@ RUN cd client && npm install && npm run build && cd ..
 
 FROM node:18-bullseye-slim
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    fonts-ubuntu ca-certificates \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 COPY --from=builder /app/server/dist ./server/dist
 COPY --from=builder /app/server/package*.json ./server/
-COPY --from=builder /app/client/build ./client/build
+COPY --from=builder /app/client/dist ./client/build
 COPY --from=builder /app/server/node_modules ./server/node_modules
 
 ENV NODE_ENV=production
