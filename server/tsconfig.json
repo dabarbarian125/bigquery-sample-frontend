@@ -12,6 +12,6 @@
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": ["server/src/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["dist"]
 }
